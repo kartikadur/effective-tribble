@@ -9,11 +9,16 @@ export const Stats: FC = (): ReactElement => {
     (state) => state.performance.api
   );
 
+  const renderStats = useSelector<rootReducerType, performanceState["render"]>(
+    (state) => state.performance.render
+  );
+
   return (
     <>
       <Navbar title="Stats" />
       <h2>Stats Page</h2>
       {JSON.stringify(apiStats, null, 2)}
+      {JSON.stringify(renderStats, null, 2)}
     </>
   );
 };

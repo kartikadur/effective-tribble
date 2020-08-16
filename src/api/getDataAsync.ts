@@ -7,6 +7,5 @@ export const getDataAsync = async (uri: string) => {
   console.log('getData Async', data);
   window.performance.mark('request.stop');
   window.performance.measure('fetch.comments', 'request.start', 'request.stop');
-  console.log(window.performance.getEntriesByName("fetch.comments"))
   return data
 }
