@@ -1,10 +1,10 @@
-import { apiAction } from "../actions/performanceActions"
+import { apiAction, PropsFromProfiler } from "../actions/performanceActions"
 import { PERFORMANCEACTION } from "../constants/performanceConstants"
-import { ProfilerProps } from "react"
+
 
 export type performanceState = {
   api: Array<PerformanceMeasure>
-  render: Array<ProfilerProps>
+  render: Array<PropsFromProfiler>
 }
 
 const initialState: performanceState = {

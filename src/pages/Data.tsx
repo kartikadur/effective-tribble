@@ -3,15 +3,18 @@ import { Navbar } from "../components/Navbar";
 import { getDataAsync } from "../api/getDataAsync";
 import { useDispatch } from "react-redux";
 import { apiCalledAction } from "../store/actions/performanceActions";
+import classnames from "classnames";
 
 import { Comment } from "../components/CommentCard";
 import { Paper, makeStyles, Button } from "@material-ui/core";
 
 const useStyles = makeStyles({
-  inner: {
+  type: {
     display: "flex",
     justifyContent: "space-evenly",
     flexWrap: "wrap",
+  },
+  inner: {
     padding: "10px",
     margin: "20px",
   },
@@ -24,6 +27,7 @@ const useStyles = makeStyles({
 export const Data: FC = (): ReactElement => {
   const classes = useStyles();
   const [comments, setComments] = useState([]);
+  const [isCard, setIsCard] = useState(true);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -42,15 +46,30 @@ export const Data: FC = (): ReactElement => {
       <Navbar title="Data" />
       <h2>Data Page</h2>
       <Paper className={classes.outer} elevation={2}>
-        <Button variant="outlined">Cards</Button>
-        <Button variant="outlined">List</Button>
-        <Paper className={classes.inner} elevation={0} variant="outlined">
-          {comments.map((comment) => (
-            <Comment {...comment} />
-          ))}
+        <Button variant="outlined" onClick={() => setIsCard(true)}>
+          Cards
+        </Button>
+        <Button variant="outlined" onClick={() => setIsCard(false)}>
+          List
+        </Button>
+        <Paper
+          className={classnames(classes.inner, {
+            [`${classes.type}`]: isCard,
+          })}
+          elevation={0}
+          variant="outlined"
+        >
+          {comments.map((comment: any) => {
+            let newComment = { ...comment, isCard };
+            return (
+              <Comment
+                {...newComment}
+                key={`${comment["postId"]}_${comment["id"]}`}
+              />
+            );
+          })}
         </Paper>
       </Paper>
-      {JSON.stringify(comments, null, 2)}
     </>
   );
 };

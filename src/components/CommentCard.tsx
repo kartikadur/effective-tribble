@@ -2,6 +2,7 @@ import React, { Profiler, ReactElement, FC } from "react";
 import { Card, Typography, makeStyles, CardContent } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { renderCalledAction } from "../store/actions/performanceActions";
+import classnames from "classnames";
 
 type CommentType = {
   postId: number;
@@ -9,11 +10,14 @@ type CommentType = {
   name: string;
   body: string;
   email: string;
+  isCard: boolean;
 };
 
 const useStyles = makeStyles({
-  root: {
+  type: {
     width: 275,
+  },
+  root: {
     margin: "5px",
   },
   title: {
@@ -30,6 +34,7 @@ export const Comment: FC<CommentType> = ({
   name,
   email,
   body,
+  isCard,
 }): ReactElement => {
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -43,18 +48,18 @@ export const Comment: FC<CommentType> = ({
     interactions: any
   ) {
     //Logic to handle the profiling details
-    console.log(
-      "The component",
-      id,
-      ", The phase",
-      phase,
-      ", Time taken for the update",
-      actualDuration,
-      baseDuration,
-      startTime,
-      commitTime,
-      interactions
-    );
+    // console.log(
+    //   "The component",
+    //   id,
+    //   ", The phase",
+    //   phase,
+    //   ", Time taken for the update",
+    //   actualDuration,
+    //   baseDuration,
+    //   startTime,
+    //   commitTime,
+    //   interactions
+    // );
 
     dispatch(
       renderCalledAction({
@@ -69,7 +74,10 @@ export const Comment: FC<CommentType> = ({
   }
   return (
     <Profiler id={`${postId}_${id}`} onRender={onRenderCallback}>
-      <Card key={`${postId}_${id}`} className={classes.root}>
+      <Card
+        key={`${postId}_${id}`}
+        className={classnames(classes.root, { [`${classes["type"]}`]: isCard })}
+      >
         <CardContent>
           <Typography className={classes.title}>{name}</Typography>
           <Typography className={classes.pos}>{email}</Typography>
