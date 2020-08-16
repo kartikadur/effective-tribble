@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { renderCalledAction } from "../store/actions/performanceActions";
 import classnames from "classnames";
 
-type CommentType = {
+export type CommentType = {
   postId: number;
   id: number;
   name: string;

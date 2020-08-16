@@ -1,5 +1,5 @@
-import { apiAction, PropsFromProfiler } from "../actions/performanceActions"
-import { PERFORMANCEACTION } from "../constants/performanceConstants"
+import { apiAction, PropsFromProfiler, renderAction } from "../actions/performanceActions"
+import { PERFORMANCEACTION } from "../constants"
 
 
 export type performanceState = {
@@ -12,13 +12,18 @@ const initialState: performanceState = {
   render: [],
 }
 
-export const performanceReducer = (state: performanceState = initialState, { type, payload }: apiAction) => {
+export const performanceReducer = (state: performanceState = initialState, { type, payload }: apiAction | renderAction) => {
 
   switch (type) {
     case PERFORMANCEACTION.apiCalled:
       return { ...state, api: [...state.api, payload] }
     case PERFORMANCEACTION.renderCalled:
-      return { ...state, render: [...state.render, payload] }
+      return {
+        ...state, render: {
+          ...state.render,
+          [(payload as PropsFromProfiler).id]: payload
+        }
+      }
     default:
       return state;
   }

@@ -1,4 +1,4 @@
-import { PERFORMANCEACTION } from "../constants/performanceConstants"
+import { PERFORMANCEACTION } from "../constants"
 
 export type PropsFromProfiler = {
   id: string,

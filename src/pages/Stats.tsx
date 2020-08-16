@@ -32,11 +32,11 @@ const useStyles = makeStyles({
 });
 
 export const Stats: FC = (): ReactElement => {
-  const apiStats = useSelector<rootReducerType, performanceState["api"]>(
-    (state) => state.performance.api
-  );
+  // const apiStats = useSelector<rootReducerType, performanceState["api"]>(
+  //   (state) => state.performance.api
+  // );
 
-  const renderStats = useSelector<rootReducerType, performanceState["render"]>(
+  const stats = useSelector<rootReducerType, performanceState["render"]>(
     (state) => state.performance.render
   );
 
@@ -47,12 +47,12 @@ export const Stats: FC = (): ReactElement => {
       <Navbar title="Stats" />
       <h2>Stats Page</h2>
       <Paper className={classes.inner}>
-        {renderStats.map((stat, id) => (
+        {Object.keys(stats).map((k: any, id) => (
           <Card key={id} className={classes.root}>
             <CardContent>
-              <Typography className={classes.title}>{stat.id}</Typography>
+              <Typography className={classes.title}>{stats[k].id}</Typography>
               <Typography variant="body2" component="p">
-                Render from {stat.startTime} to {stat.commitTime}
+                Render from {stats[k].startTime} to {stats[k].commitTime}
               </Typography>
             </CardContent>
           </Card>
