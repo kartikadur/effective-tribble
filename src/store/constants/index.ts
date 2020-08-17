@@ -5,4 +5,5 @@ export const PERFORMANCEACTION = {
 
 export const COMMENTS = {
   get: "[COMMENTS] get",
+  set: "[COMMENTS] set"
 }

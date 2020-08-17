@@ -1,17 +1,9 @@
 import React, { Profiler, ReactElement, FC } from "react";
 import { Card, Typography, makeStyles, CardContent } from "@material-ui/core";
 import { useDispatch } from "react-redux";
-import { renderCalledAction } from "../store/actions/performanceActions";
+import { renderCalledAction } from "../store/actions";
 import classnames from "classnames";
-
-export type CommentType = {
-  postId: number;
-  id: number;
-  name: string;
-  body: string;
-  email: string;
-  isCard: boolean;
-};
+import { CommentType } from "../store/reducers/dataReducer";
 
 const useStyles = makeStyles({
   type: {

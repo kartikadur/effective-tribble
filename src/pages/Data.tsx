@@ -2,7 +2,7 @@ import React, { ReactElement, FC, useState, useEffect } from "react";
 import { Navbar } from "../components/Navbar";
 import { getDataAsync } from "../api/getDataAsync";
 import { useDispatch } from "react-redux";
-import { apiCalledAction } from "../store/actions/performanceActions";
+import { apiCalledAction } from "../store/actions";
 import classnames from "classnames";
 
 import { Comment } from "../components/CommentCard";

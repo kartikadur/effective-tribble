@@ -1,4 +1,5 @@
 import { PERFORMANCEACTION } from "../constants"
+import { CommentType } from "../reducers/dataReducer"
 
 export type PropsFromProfiler = {
   id: string,
@@ -17,6 +18,11 @@ export type apiAction = {
 export type renderAction = {
   type: string,
   payload: PropsFromProfiler
+}
+
+export type dataAction = {
+  type: string,
+  payload: CommentType | Array<CommentType>
 }
 
 

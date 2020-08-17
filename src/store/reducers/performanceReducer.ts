@@ -1,4 +1,4 @@
-import { apiAction, PropsFromProfiler, renderAction } from "../actions/performanceActions"
+import { apiAction, PropsFromProfiler, renderAction } from "../actions"
 import { PERFORMANCEACTION } from "../constants"
 
 
