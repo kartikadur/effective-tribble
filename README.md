@@ -12,5 +12,6 @@
 ## If I had more time
 
 - I'd track the mount, updated, and subsequent refreshes for each comment.
+- I'd stagger the load so the response isnt janky.
 - I'd use the redux persistence module to retain data, between refreshes, but if this were a full stack project the data would be sent to the backend to be stored in a database.
-- Create a Graph UI for the data, similar to how data is shown in the dev tools.
+- Create a Graph UI for the data, similar to how data is shown in the dev tools. The one I'm using currently is very basic.
