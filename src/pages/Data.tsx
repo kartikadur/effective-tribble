@@ -44,7 +44,6 @@ export const Data: FC = (): ReactElement => {
   return (
     <>
       <Navbar title="Data" />
-      <h2>Data Page</h2>
       <Paper className={classes.outer} elevation={2}>
         <Button variant="outlined" onClick={() => setIsCard(true)}>
           Cards
