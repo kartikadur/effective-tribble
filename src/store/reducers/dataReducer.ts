@@ -10,7 +10,7 @@ export type CommentType = {
   isCard: boolean;
 };
 
-type dataStateType = {
+export type dataStateType = {
   comments: { [key: string]: CommentType };
 }
 
@@ -22,7 +22,7 @@ export const dataReducer = (state: dataStateType = initialState, { type, payload
 
   switch (type) {
     case COMMENTS.set:
-      return { ...state, comments: { ...state.comments, [(payload as CommentType).id]: payload } }
+      return { ...state, comments: { ...state.comments, ...payload } }
     case COMMENTS.get:
     default:
       return state;

@@ -1,5 +1,5 @@
-import { PERFORMANCEACTION } from "../constants"
-import { CommentType } from "../reducers/dataReducer"
+import { PERFORMANCEACTION, COMMENTS } from "../constants"
+import { dataStateType } from "../reducers/dataReducer"
 
 export type PropsFromProfiler = {
   id: string,
@@ -22,7 +22,7 @@ export type renderAction = {
 
 export type dataAction = {
   type: string,
-  payload: CommentType | Array<CommentType>
+  payload: dataStateType
 }
 
 
@@ -33,5 +33,10 @@ export const apiCalledAction = (data: PerformanceMeasure): apiAction => ({
 
 export const renderCalledAction = (data: PropsFromProfiler): renderAction => ({
   type: PERFORMANCEACTION.renderCalled,
+  payload: data
+})
+
+export const setComments = (data: dataStateType): dataAction => ({
+  type: COMMENTS.set,
   payload: data
 })
