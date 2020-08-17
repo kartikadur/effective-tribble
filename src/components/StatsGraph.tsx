@@ -17,8 +17,8 @@ export const StatsGraph: FC = (): ReactElement => {
       datasets: [
         {
           data: data,
-          backgroundColor: ["rgba(75, 192, 192, 0.6)"],
-          borderWidth: 4,
+          backgroundColor: "rgba(75, 192, 192, 0.6)",
+          borderWidth: 1,
         },
       ],
     });
